@@ -7,7 +7,7 @@ const path = require('path');
 require('dotenv').config()
 const app = express();
 app.use(cors());
-app.use(forceSsl);
+// app.use(forceSsl);
 
 const port = process.env.PORT || 5000;
 
