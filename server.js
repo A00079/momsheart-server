@@ -29,7 +29,9 @@ app.get("/order", (req, res) => {
         console.log('======================')
         let credencials = razorpay_details.data();
         const options = {
-          amount: credencials.amount * 100, // amount == Rs 10
+          amount: 100 * 100, // amount == Rs 10
+
+          // amount: credencials.amount * 100, // amount == Rs 10
           currency: "INR",
           receipt: "receipt#1",
           payment_capture: 0,
@@ -67,14 +69,14 @@ app.post("/capture/:paymentId", (req, res) => {
     var docRef = db.collection("metadata").doc("razorpay-testing");
     docRef.get().then(function (razorpay_details) {
       if (razorpay_details.exists) {
-        console.log('======================')
         let credencials = razorpay_details.data();
         return request(
           {
             method: "POST",
             url: `https://${process.env.RAZOR_PAY_KEY_ID}:${process.env.RAZOR_PAY_KEY_SECRET}@api.razorpay.com/v1/payments/${req.params.paymentId}/capture`,
             form: {
-              amount: credencials.amount * 100, // amount == Rs 10 // Same As Order amount
+              amount: 100 * 100, // amount == Rs 10 // Same As Order amount
+              // amount: credencials.amount * 100, // amount == Rs 10 // Same As Order amount
               currency: "INR",
             },
           },
