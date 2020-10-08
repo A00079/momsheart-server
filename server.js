@@ -5,8 +5,7 @@ const request = require('request');
 const cors = require("cors");
 const path = require('path');
 const firestore = require('./firestore');
-const dotenv = require('dotenv');
-dotenv.config();
+require('dotenv').config()
 const app = express();
 app.use(cors());
 app.use(forceSsl);
@@ -15,8 +14,8 @@ const port = process.env.PORT || 5000;
 
 // Initializing Razorpay instance
 const instance = new Razorpay({
-  key_id: "rzp_live_5XI4Yz4maReCly",
-  key_secret: "XZIIUyysa0LBk9eWQ6qppAfR",
+  key_id: process.env.RAZOR_PAY_KEY_ID,
+  key_secret: process.env.RAZOR_PAY_KEY_SECRET,
 });
 
 // Server Api's
