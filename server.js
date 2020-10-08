@@ -23,7 +23,7 @@ const instance = new Razorpay({
 app.get("/order", (req, res) => {
   try {
     const db = firestore.firestore.firestore();
-    var docRef = db.collection("metadata").doc("razorpay-testing");
+    var docRef = db.collection("metadata").doc("razorpay");
     docRef.get().then(function (razorpay_details) {
       if (razorpay_details.exists) {
         let credencials = razorpay_details.data();
@@ -63,7 +63,7 @@ app.get("/order", (req, res) => {
 app.post("/capture/:paymentId", (req, res) => {
   try {
     const db = firestore.firestore.firestore();
-    var docRef = db.collection("metadata").doc("razorpay-testing");
+    var docRef = db.collection("metadata").doc("razorpay");
     docRef.get().then(function (razorpay_details) {
       if (razorpay_details.exists) {
         let credencials = razorpay_details.data();
